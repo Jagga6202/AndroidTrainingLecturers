@@ -1,0 +1,186 @@
+Date 4th February
+
+Option Menu
+Android Option Menus are the primary menus of android. They can be used for settings, search, delete item etc.
+
+Simple option menu example that contains three menu items. In this example we will have 
+a menu.xml file,a mainctivity and its layout.
+
+menu.xml file will look like
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"  
+    xmlns:app="http://schemas.android.com/apk/res-auto"  
+    xmlns:tools="http://schemas.android.com/tools"  >  
+  
+    <item  android:id="@+id/item1"  
+        android:title="Item 1"/>  
+    <item  android:id="@+id/item2"  
+        android:title="Item 2"/>  
+    <item  android:id="@+id/item3"  
+        android:title="Item 3"  
+        app:showAsAction="withText"/>  
+</menu>  
+
+In main activity we have to implement onCreateOptionsMenu method in order to use menu file & also have to implement onOptionsItemSelected to perfom some action when one of the menu is selected.
+
+@Override  
+    public boolean onCreateOptionsMenu(Menu menu) {  
+        // Inflate the menu; this adds items to the action bar if it is present.  
+        getMenuInflater().inflate(R.menu.menu_main, menu);  
+        return true;  
+    }  
+  
+    @Override  
+    public boolean onOptionsItemSelected(MenuItem item) {  
+       int id = item.getItemId();  
+        switch (id){  
+            case R.id.item1:  
+                Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();  
+                return true;  
+            case R.id.item2:  
+                Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();  
+                return true;  
+            case R.id.item3:  
+                Toast.makeText(getApplicationContext(),"Item 3 Selected",Toast.LENGTH_LONG).show();  
+                return true;  
+            default:  
+                return super.onOptionsItemSelected(item);  
+        }  
+
+option menu with icons
+
+for option menu with icons we will create vector drawable using vector assist
+the over menu.xml file will look like
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_add_contact"
+                android:icon="@drawable/ic_person_add_black_24dp"
+                android:title="Add contact"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/action_settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/action_about_us"
+                android:icon="@drawable/ic_info_outline_black_24dp"
+                android:title="About us"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
+
+</menu>
+
+java code will be simillar as above
+
+
+Context Menu
+
+Android context menu appears when user press long click on the element. It is also known as floating menu.
+
+It affects the selected content while doing action on it.
+
+In Context Menu we will make use of listview and long press on its item then display menu items that are in menu.xml file
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/call"
+        android:title="Call"/>
+    <item android:id="@+id/sms"
+        android:title="SMS"/>
+
+</menu>
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_context_menu);
+    lv=(ListView)findViewById(R.id.lv);
+     arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,names);
+     lv.setAdapter(arrayAdapter);
+     registerForContextMenu(lv);
+}
+
+@Override
+public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    super.onCreateContextMenu(menu, v, menuInfo);
+    getMenuInflater().inflate(R.menu.context_menu,menu);
+    menu.setHeaderTitle("Select An Action");
+}
+
+@Override
+public boolean onContextItemSelected(MenuItem item) {
+    int id=item.getItemId();
+    switch (id){
+        case R.id.call:
+            Toast.makeText(this, ""+item.getTitle(), Toast.LENGTH_SHORT).show();
+            return true;
+        case R.id.sms:
+            Toast.makeText(this, ""+item.getTitle(), Toast.LENGTH_SHORT).show();
+         default:
+             return super.onContextItemSelected(item);
+    }
+
+
+PopUp Menu
+
+Android Popup Menu displays the menu below the anchor text if space is available otherwise above the anchor text. It disappears if you click outside the popup menu.
+
+In this we will take a button and on button click we will make popmenu to display having items in our menu.xml file.
+
+<?xml version="1.0" encoding="utf-8"?>  
+<menu xmlns:android="http://schemas.android.com/apk/res/android">  
+    <item  
+        android:id="@+id/one"  
+        android:title="One" />  
+    <item  
+        android:id="@+id/two"  
+        android:title="Two"/>  
+    <item  
+        android:id="@+id/three"  
+        android:title="Three"/>  
+</menu> 
+
+PopupMenu popupMenu =new PopupMenu(PopMenuActivity.this,button);
+popupMenu.getMenuInflater().inflate(R.menu.popup_menu,popupMenu.getMenu());
+
+popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        int id=menuItem.getItemId();
+        switch (id){
+            case R.id.one:
+                Toast.makeText(PopMenuActivity.this, ""+menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.two:
+                Toast.makeText(PopMenuActivity.this, ""+menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.three:
+                Toast.makeText(PopMenuActivity.this, ""+menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                return true;
+
+                default:
+                    return false;
+        }
+
+
+    }
+
+});
+
+popupMenu.show();
+
+
+

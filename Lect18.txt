@@ -1,0 +1,70 @@
+Date 11th February
+
+ListView 
+
+Android ListView is a view which groups several items and display them in vertical scrollable list. The list items are automatically inserted to the list using an Adapter that pulls content from a source such as an array or database.
+
+An adapter actually bridges between UI components and the data source that fill data into UI Component.
+
+
+We can have a listview with default adapter or default listview for this we can use Arrayadapter and we need to define over single item view by android.R.layout.simple_list_item1 .for performing this we will have main activity in its layout we need a listview widgets.
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
+
+
+public class MainActivity extends AppCompatActivity {
+ListView lv;
+String data[]={"India","Us","Uk","Pakistan","Australia","Austria","NewZealand","Italy","France","Peru","China"};
+ArrayAdapter<String> adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lv=(ListView)findViewById(R.id.lv);
+        adapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,data);
+        lv.setAdapter(adapter);
+        
+    }
+}
+
+
+If we have to perfom some action when we click on items of listview then we have to use 
+setOnItemClickListener
+
+lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(MainActivity.this, "Welcome to "+data[position], Toast.LENGTH_SHORT).show();
+    }
+});
+
+
+
+
+
+
+
+
+
+
+

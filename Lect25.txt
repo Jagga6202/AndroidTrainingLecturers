@@ -1,0 +1,121 @@
+                  Date 21th February
+
+
+
+Framelayout with Fragments(Dynamic Fragments)
+
+
+activity.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="368dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="146dp"
+        android:layout_marginBottom="168dp"
+        android:text="Click"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frame" />
+</android.support.constraint.ConstraintLayout>
+
+Fragment Layout
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    tools:context=".OneFragment">
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:src="@mipmap/ic_launcher"
+    android:padding="16dp"
+    android:layout_margin="16dp"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/imageView"
+    android:text="OneFragment"
+    android:layout_centerHorizontal="true"
+    android:textStyle="bold"
+    android:textSize="20dp"
+    android:textColor="@android:color/holo_blue_dark"/>
+</RelativeLayout>
+
+Fragment Code
+
+public class OneFragment extends Fragment {
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view=inflater.inflate(R.layout.fragment_one,container,false);
+
+        return view;
+    }
+
+}
+
+Activity Code
+
+public class MainActivity extends AppCompatActivity {
+Button button;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button=(Button)findViewById(R.id.click);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm=getSupportFragmentManager();
+                FragmentTransaction ft=fm.beginTransaction();
+                ft.replace(R.id.frame,new OneFragment());
+                ft.commit();
+            }
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

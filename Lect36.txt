@@ -1,0 +1,119 @@
+Date 14th march
+
+Android Notification
+
+Android Notification provides short, timely information about the action happened in the application, even it is not running. The notification displays the icon, title and some amount of the content text.
+
+The properties of Android notification are set using NotificationCompat.Builder object. 
+
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/notitext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:text="ANDROID NOTIFICATION"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/notify"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="274dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="123dp"
+        android:elevation="4dp"
+        android:text="Notify"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notitext" />
+
+</android.support.constraint.ConstraintLayout>
+
+
+public class MainActivity extends AppCompatActivity {
+Button notify;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        notify=(Button)findViewById(R.id.notify);
+        notify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               addNotification();
+            }
+        });
+    }
+
+    private void addNotification(){
+        NotificationManager nm = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        String CHANNEL_ID = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            CHANNEL_ID= "my_channel_01";
+            CharSequence name = "my_channel";
+            String Description = "This is my channel";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+            mChannel.setDescription(Description);
+            mChannel.enableLights(true);
+            mChannel.setLightColor(Color.RED);
+            mChannel.enableVibration(true);
+            mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mChannel.setShowBadge(false);
+            nm.createNotificationChannel(mChannel);
+        }
+
+
+
+        NotificationCompat.Builder builder= new NotificationCompat.Builder(this,CHANNEL_ID);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle("Android Notification Demo");
+        builder.setContentText("This is My Notification");
+        builder.setAutoCancel(true);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        Intent intent=new Intent(this,NotificationView.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("Message","This is My Notification");
+        PendingIntent pi=PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        nm.notify(1,builder.build());
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

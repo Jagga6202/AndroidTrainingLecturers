@@ -1,0 +1,97 @@
+Android Syllabus
+Month Of January
+7:-Core java(if,else,switch,loops,break,continue)
+8:-Oops Concepts( Object ,Class ,Inheritance,Polymorphism)
+9:-Abstraction,Interface
+10:-Java Exception Handling
+11:-Doubt Session
+14:-What is Android,Android History & Version
+15:-Installing Android Studio
+16:-Bulding First App and Understanding Android Studio
+17:-Ui Widgets(Button,Toast)
+18:-Doubt Session
+21:-Ui Widgets(Toggle,Switch,Image Button)
+22:-Ui Widgets(CheckBox,AlertDialog)
+23:-Ui Widgets(Spinner)
+24:-Ui Widgets(Rating Bar,DatePicker,TimePicker)
+25:-Doubt Session
+28:-Ui Widgets(ProgressBar,FileDownload)
+29:-Ui Widgets(SeekBar,Analog Clock and Digital Clock)
+30:-EditText with TextWatcher
+31:-Mock Test
+
+
+Month Of February
+1:-Doubt Session
+4:-Option Menu,Context Menu,PopUp Menu
+5:-Relative Layout,LinearLayout
+6:-What is Activity and Activity Lifecycle
+7:-Intents
+8:-Doubt Session
+11:-ListView(Adapters)
+12:-ListView(with CustomAdapter)
+13:-RecyclerView
+14:-Difference Between List & RecyclerView
+15:-Doubt Session
+18:-GridView
+19:-ScrollView,SearchView
+20:-Android Fragments and Fragments Lifecycle
+21:-Framelayout with Fragments(Dynamic Fragments)
+22:-Doubt Session
+25:-ViewPager with Images and Fragments
+26:-Tablayout with viewpager
+27:-ViewFlipper,AdapterViewFlipper
+28:-Mock Test
+
+Month Of March
+1:-Doubt Session
+4:-What is AsyncTask in Android,Web services(php basics)(Lect29)
+5:-Register Example using Web services(AsyncTask)(Lect30)
+6:-Login Example using Web services(AsyncTask)(Lect31)
+7:-Json Parsing(Lect32)
+8:-Doubt Session
+11:-Sqlite(Lect33)
+12:-Android Services
+13:-Broadcast Reciver
+14:-Notifications
+15:-Doubt Session
+18:-StartActivityforResult(Camera and Gallery)
+19:-Design Splash Screen
+20:-WebView,MediaApi
+21:-VideoView
+22:-Doubt Session
+25:-Android Speech
+26:-Animation
+27:-How to add external library to android studio as use them
+28:-Volley Library
+29:-MockTest
+
+Month Of April
+1:-Register Example using Web services(Volley )
+2:-Login Example using Web services(Volley )
+3:-Upload image to server
+4:-fetch image from server
+5:-Doubt Session
+8:-Google Map Integration
+9:-Location Services
+10:-Telephone Manager
+11:-Wifi
+12:-Doubt Session
+15:-
+16:-
+17:-
+18:-
+19:-Doubt Session
+22:-
+23:-
+24:-
+25:-
+26:-Doubt Session
+29:-
+30:-Mock Test
+
+Month Of May
+1:-
+2:-
+3:-
+

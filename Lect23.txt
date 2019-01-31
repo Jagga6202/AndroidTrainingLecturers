@@ -1,0 +1,516 @@
+                  Date 19th February
+
+
+
+ScrollView 
+
+ScrollView is used to scroll the child elements of palette inside ScrollView. Android supports vertical scroll view as default scroll view. Vertical ScrollView scrolls elements vertically.
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="186dp"
+        android:text="ScrollView Demo"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+         <Button
+             android:id="@+id/button1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center_horizontal"
+             android:padding="8dp"
+             android:layout_margin="8dp"
+             android:text="Button1"/>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button2"/>
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button3"/>
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button4"/>
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button5"/>
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button6"/>
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button7"/>
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button8"/>
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button9"/>
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button10"/>
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button11"/>
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button12"/>
+            <Button
+                android:id="@+id/button13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button13"/>
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:text="Button14"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
+
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+Button button1,button2,button3,button4,button5,button6,button7,button8,
+        button9,button10,button11,button12,button13,button14;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button1=(Button)findViewById(R.id.button1);
+        button2=(Button)findViewById(R.id.button2);
+        button3=(Button)findViewById(R.id.button3);
+        button4=(Button)findViewById(R.id.button4);
+        button5=(Button)findViewById(R.id.button5);
+        button6=(Button)findViewById(R.id.button6);
+        button7=(Button)findViewById(R.id.button7);
+        button8=(Button)findViewById(R.id.button8);
+        button9=(Button)findViewById(R.id.button9);
+        button10=(Button)findViewById(R.id.button10);
+        button11=(Button)findViewById(R.id.button11);
+        button12=(Button)findViewById(R.id.button12);
+        button13=(Button)findViewById(R.id.button13);
+        button14=(Button)findViewById(R.id.button14);
+
+
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
+        button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
+        button10.setOnClickListener(this);
+        button11.setOnClickListener(this);
+        button12.setOnClickListener(this);
+        button13.setOnClickListener(this);
+        button14.setOnClickListener(this);
+
+    }
+
+      @Override
+    public void onClick(View v) {
+        int id=v.getId();
+        switch (id){
+            case R.id.button1:
+                Toast.makeText(this, ""+button1.getText().toString(), Toast.LENGTH_SHORT).show();
+            break;
+            case R.id.button2:
+                Toast.makeText(this, ""+button2.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button3:
+                Toast.makeText(this, ""+button3.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button4:
+                Toast.makeText(this, ""+button4.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button5:
+                Toast.makeText(this, ""+button5.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button6:
+                Toast.makeText(this, ""+button6.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button7:
+                Toast.makeText(this, ""+button7.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button8:
+                Toast.makeText(this, ""+button8.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button9:
+                Toast.makeText(this, ""+button9.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button10:
+                Toast.makeText(this, ""+button10.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button11:
+                Toast.makeText(this, ""+button11.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button12:
+                Toast.makeText(this, ""+button12.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button13:
+                Toast.makeText(this, ""+button13.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button14:
+                Toast.makeText(this, ""+button14.getText().toString(), Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+    }
+
+   }
+
+HorizontalScrollView
+
+HorizontalScrollView is used to scroll the child elements or views in a horizontal direction. HorizontalScrollView only supports horizontal scrolling.
+
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent">  
+  
+  
+    <TextView  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:textAppearance="?android:attr/textAppearanceSmall"  
+        android:text="Horizontal ScrollView Example"  
+        android:id="@+id/textView"  
+        android:layout_alignParentTop="true"  
+        android:layout_centerHorizontal="true" />  
+  
+  
+    <LinearLayout  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        android:layout_marginTop="25dp">  
+        <HorizontalScrollView  
+            android:layout_width="match_parent"  
+            android:layout_height="60dp"  
+            android:id="@+id/horizontalScrollView">  
+  
+            <LinearLayout  
+                android:layout_width="wrap_content"  
+                android:layout_height="wrap_content"  
+                android:orientation="horizontal">  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button1"  
+                    android:id="@+id/button1" />  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button2"  
+                    android:id="@+id/button2" />  
+  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button3"  
+                    android:id="@+id/button3" />  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button4"  
+                    android:id="@+id/button4" />  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button5"  
+                    android:id="@+id/button5" />  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button6"  
+                    android:id="@+id/button6" />  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button7"  
+                    android:id="@+id/button7" />  
+                <Button  
+                    android:layout_width="wrap_content"  
+                    android:layout_height="wrap_content"  
+                    android:text="New Button8"  
+                    android:id="@+id/button8"/>  
+            </LinearLayout>  
+  
+        </HorizontalScrollView>  
+    </LinearLayout>  
+</RelativeLayout>  
+
+SearchView
+
+Android SearchView provides user interface to search query submitted over search provider. 
+
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    xmlns:tools="http://schemas.android.com/tools"  
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"  
+    android:paddingBottom="@dimen/activity_vertical_margin"  
+    android:paddingLeft="@dimen/activity_horizontal_margin"  
+    android:paddingRight="@dimen/activity_horizontal_margin"  
+    android:paddingTop="@dimen/activity_vertical_margin"  
+    tools:context="com.example.test.searchview.MainActivity">  
+  
+    <ListView  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        android:id="@+id/lv1"  
+        android:divider="#ad5"  
+        android:dividerHeight="2dp"  
+        android:layout_below="@+id/searchView"/>  
+  
+    <SearchView  
+        android:id="@+id/searchView"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:queryHint="Search Here"  
+        android:iconifiedByDefault="false"  
+        android:layout_alignParentTop="true"  
+   />  
+  
+</RelativeLayout>  
+
+
+public class MainActivity extends AppCompatActivity {  
+    SearchView searchView;  
+    ListView listView;  
+    ArrayList<String> list;  
+    ArrayAdapter<String > adapter;  
+    @Override  
+    protected void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.activity_main);  
+  
+        searchView = (SearchView) findViewById(R.id.searchView);  
+        listView = (ListView) findViewById(R.id.lv1);  
+  
+        list = new ArrayList<>();  
+        list.add("Apple");  
+        list.add("Banana");  
+        list.add("Pineapple");  
+        list.add("Orange");  
+        list.add("Lychee");  
+        list.add("Gavava");  
+        list.add("Peech");  
+        list.add("Melon");  
+        list.add("Watermelon");  
+        list.add("Papaya");  
+  
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);  
+        listView.setAdapter(adapter);  
+  
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {  
+            @Override  
+            public boolean onQueryTextSubmit(String query) {  
+  
+                if(list.contains(query)){  
+                    adapter.getFilter().filter(query);  
+                }else{  
+                    Toast.makeText(MainActivity.this, "No Match found",Toast.LENGTH_LONG).show();  
+                }  
+                return false;  
+            }  
+  
+            @Override  
+            public boolean onQueryTextChange(String newText) {  
+            //    adapter.getFilter().filter(newText);  
+                return false;  
+            }  
+        });  
+    }  
+}
+
+SearchView 
+
+Android SearchView provides user interface to search query submitted over search provider. 
+
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    xmlns:tools="http://schemas.android.com/tools"  
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent"  
+    android:paddingBottom="@dimen/activity_vertical_margin"  
+    android:paddingLeft="@dimen/activity_horizontal_margin"  
+    android:paddingRight="@dimen/activity_horizontal_margin"  
+    android:paddingTop="@dimen/activity_vertical_margin"  
+    tools:context="com.example.test.searchview.MainActivity">  
+  
+    <ListView  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        android:id="@+id/lv1"  
+        android:divider="#ad5"  
+        android:dividerHeight="2dp"  
+        android:layout_below="@+id/searchView"/>  
+  
+    <SearchView  
+        android:id="@+id/searchView"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:queryHint="Search Here"  
+        android:iconifiedByDefault="false"  
+        android:layout_alignParentTop="true"  
+   />  
+  
+</RelativeLayout>  
+
+public class MainActivity extends AppCompatActivity {  
+    SearchView searchView;  
+    ListView listView;  
+    ArrayList<String> list;  
+    ArrayAdapter<String > adapter;  
+    @Override  
+    protected void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);  
+        setContentView(R.layout.activity_main);  
+  
+        searchView = (SearchView) findViewById(R.id.searchView);  
+        listView = (ListView) findViewById(R.id.lv1);  
+  
+        list = new ArrayList<>();  
+        list.add("Apple");  
+        list.add("Banana");  
+        list.add("Pineapple");  
+        list.add("Orange");  
+        list.add("Lychee");  
+        list.add("Gavava");  
+        list.add("Peech");  
+        list.add("Melon");  
+        list.add("Watermelon");  
+        list.add("Papaya");  
+  
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);  
+        listView.setAdapter(adapter);  
+  
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {  
+            @Override  
+            public boolean onQueryTextSubmit(String query) {  
+  
+                if(list.contains(query)){  
+                    adapter.getFilter().filter(query);  
+                }else{  
+                    Toast.makeText(MainActivity.this, "No Match found",Toast.LENGTH_LONG).show();  
+                }  
+                return false;  
+            }  
+  
+            @Override  
+            public boolean onQueryTextChange(String newText) {  
+            //    adapter.getFilter().filter(newText);  
+                return false;  
+            }  
+        });  
+    }  
+}    
+
+
+
+
+
+
+
+
+
+
+
+

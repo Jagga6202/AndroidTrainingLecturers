@@ -1,0 +1,135 @@
+Date 12th February
+
+ListView with custom dapter(custom listview)
+
+The main advantage of android is that you can customize your view so we can customize adapter.
+
+Step for making customListView
+
+1)Take a make activity and in its layout take a listview.
+
+<ListView
+    android:id="@+id/lv"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
+
+
+2)create a model class which we act as data which we want to set on listview
+
+public class TestModel {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    String name;
+    String course;
+
+    public TestModel(String name, String course) {
+        this.name = name;
+        this.course = course;
+    }
+}
+
+3)The create a layout which is single item view that you want
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="10">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_weight="5"
+        android:padding="16dp"
+        android:gravity="center"
+        android:text="Hello" />
+    <TextView
+        android:id="@+id/course"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_weight="5"
+        android:padding="16dp"
+        android:gravity="center"
+        android:text="Hello" />
+</LinearLayout>
+
+4)The we will create a custom adapter
+
+public class CustomAdapter extends ArrayAdapter{
+    private ArrayList<TestModel> arrayList;
+    private Context mContext;
+    public CustomAdapter(Context mContext,ArrayList<TestModel> arrayList) {
+        super(mContext, R.layout.items);
+        this.arrayList = arrayList;
+        this.mContext = mContext;
+    }
+    @Override
+    public View getView(int position,  View convertView,  ViewGroup parent) {
+        View view=LayoutInflater.from(mContext).inflate(R.layout.items,parent,false);
+        TextView name=(TextView)view.findViewById(R.id.name);
+        TextView course=(TextView)view.findViewById(R.id.course);
+        name.setText(arrayList.get(position).getName());
+        course.setText(arrayList.get(position).getCourse());
+        return view;
+    }
+    @Override
+    public int getCount() {
+        return arrayList.size();
+    }
+}
+
+5)Then finally setting adapter in mainactivity
+
+
+public class MainActivity extends AppCompatActivity {
+ListView lv;
+CustomAdapter adapter;
+ArrayList<TestModel> arrayList;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lv=(ListView)findViewById(R.id.lv);
+        arrayList=new ArrayList<TestModel>();
+        arrayList.add(new TestModel("Ram","PHP"));
+        arrayList.add(new TestModel("Sham","HTML"));
+        arrayList.add(new TestModel("Ajay","JAVA"));
+        arrayList.add(new TestModel("Vijay","PYTHON"));
+        arrayList.add(new TestModel("Parveen","IOS"));
+        arrayList.add(new TestModel("Gagandeep","ANGULARJS"));
+        arrayList.add(new TestModel("Jagga","ANDROID"));
+        adapter=new CustomAdapter(this,arrayList);
+          lv.setAdapter(adapter);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

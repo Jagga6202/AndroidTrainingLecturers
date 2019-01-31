@@ -1,0 +1,57 @@
+Date 24nd January:-
+
+Rating Bar
+Android RatingBar can be used to get the rating from the user. The Rating returns a floating-point number. It may be 2.0, 3.5, 4.0 etc.
+
+Xml Part
+ <RatingBar  
+        android:id="@+id/ratingBar"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        />  
+
+Java Part
+
+RatingBar ratingbar=(RatingBar)findViewById(R.id.ratingBar);  
+
+String rating=String.valueOf(ratingbar.getRating());  
+Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show(); 
+
+ 
+DatePicker
+
+Android DatePicker is a widget to select date. It allows you to select date by day, month and year. 
+
+Xml Part
+ <DatePicker  
+        android:id="@+id/datePicker"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+         />  
+
+Java Part
+
+DatePicker picker=(DatePicker)findViewById(R.id.datePicker);  
+picker.getMonth() + 1
+picker.getDayOfMonth()
+picker.getYear()
+
+TimePicker
+
+Android TimePicker widget is used to select date. It allows you to select time by hour and minute. 
+
+Xml Part
+
+  <TimePicker  
+        android:id="@+id/timePicker"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_above="@+id/textView1"  
+        android:layout_centerHorizontal="true"  
+        android:layout_marginBottom="36dp" />  
+
+Java Part
+
+TimePicker timepicker=(TimePicker)findViewById(R.id.timePicker);  
+timepicker.getCurrentHour()
+timepicker.getCurrentMinute()

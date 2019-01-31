@@ -1,0 +1,60 @@
+Date 21st January:-
+
+ToggleButton
+Android Toggle Button can be used to display checked/unchecked (On/Off) state on the button.
+
+Xml Part
+
+<ToggleButton  
+        android:id="@+id/toggleButton2"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:textOff="Off"  
+        android:textOn="On" 
+     />  
+
+Java Part
+
+ ToggleButton toggleButton2=(ToggleButton)findViewById(R.id.toggleButton2);  
+ toggleButton1.getText();
+
+Switch Button
+ A Switch is a two-state button through which only two states ON and OFF can be selected
+Xml Part
+ <Switch
+        android:id="@+id/switchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       />
+Java Part
+Switch aSwitch=(Switch)findViewById(R.id.switch1);
+aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isChecked){
+            Toast.makeText(SwitchActivity.this, "Switch is ON", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(SwitchActivity.this, "Switch is OFF", Toast.LENGTH_SHORT).show();
+        }
+    }
+});
+
+ImageButton
+ImageButton is used to display a normal button with a custom image in a button.
+XML Part
+<ImageButton
+android:id="@+id/simpleImageButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:src="@drawable/home" />
+Java Part
+ImageButton ib=(ImageButton)findViewById(R.id.simpleImageButton);
+ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//code
+                      }
+        });
+
+

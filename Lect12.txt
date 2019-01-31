@@ -1,0 +1,41 @@
+Date 29th January
+Analog Clock & Digital Clock
+The android.widget.AnalogClock and android.widget.DigitalClock classes provides the functionality to display analog and digital clocks.
+XML Part
+<AnalogClock  
+        android:id="@+id/analogClock1"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+       />  
+  
+    <DigitalClock  
+        android:id="@+id/digitalClock1"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+       />  
+SeekBar
+Android SeekBar is a kind of ProgressBar with draggable thumb. The end user can drag the thum left and right
+XML Part
+<SeekBar  
+        android:id="@+id/seekBar"  
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content" />
+Java Part
+SeekBar seekBar=(SeekBar)findViewById(R.id.seekBar);  
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {  
+            @Override  
+            public void onProgressChanged(SeekBar seekBar, int progress,  
+                                          boolean fromUser) {  
+                Toast.makeText(getApplicationContext(),"seekbar progress: "+progress, Toast.LENGTH_SHORT).show();  
+            }  
+  
+            @Override  
+            public void onStartTrackingTouch(SeekBar seekBar) {  
+                Toast.makeText(getApplicationContext(),"seekbar touch started!", Toast.LENGTH_SHORT).show();  
+            }  
+  
+            @Override  
+            public void onStopTrackingTouch(SeekBar seekBar) {  
+                Toast.makeText(getApplicationContext(),"seekbar touch stopped!", Toast.LENGTH_SHORT).show();  
+            }  
+        }); 

@@ -1,0 +1,29 @@
+Date 14th February
+
+Difference Between ListView & RecyclerView
+
+1)RecyclerView is an advanced version ListView to use recyclerView you need to add design library in your android studio project no such requirement for ListView.
+
+2)ViewHolder Pattern is Compulsory for RecyclerView which makes its to scroll smoothly.
+
+3)LayoutManager provides Recyclerview to scroll vertical ,horizontal etc but in Listview you can vertical scroll only
+
+4)setOnItemClickListner is not there in Recyclerview,but it is present in Listview
+
+5)Deafult adapter can be used with Listview but we need to use custom adapter in recyclerview
+
+
+GridLayoutManager example in RecyclerView
+
+recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
+recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+
+for HORIZONTAL 
+recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
+
+
+
+
+

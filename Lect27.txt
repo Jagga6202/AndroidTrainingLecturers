@@ -1,0 +1,146 @@
+                  Date 26th February
+
+
+
+TabLayout with ViewPager
+
+TabLayout is another popular view type introduced in the Material Design Guidelines. It provides a horizontal layout of tabs which are generally placed at the top of the screen according to the Android UI Guidelines.
+
+Take Three Fragment and a mainactivity and inside it take TabLayout and View Pager
+
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        app:tabTextColor="@android:color/white"
+        app:tabIndicatorColor="@android:color/darker_gray"
+        android:layout_height="wrap_content">
+
+    </android.support.design.widget.TabLayout>
+   <android.support.v4.view.ViewPager
+       android:layout_below="@+id/tab"
+       android:id="@+id/viewPager"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+</RelativeLayout>
+
+Create a model class
+
+public class TabModel {
+    Fragment fragment;
+
+    public Fragment getFragment() {
+        return fragment;
+    }
+
+    public void setFragment(Fragment fragment) {
+        this.fragment = fragment;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    String title;
+
+    public TabModel(Fragment fragment, String title) {
+        this.fragment = fragment;
+        this.title = title;
+    }
+}
+
+
+Create a adapter class
+
+public class TabAdapter extends FragmentPagerAdapter {
+ArrayList<TabModel> arrayList;
+
+    public TabAdapter(FragmentManager fm,ArrayList<TabModel> arrayList ) {
+        super(fm);
+        this.arrayList=arrayList;
+        }
+
+    @Override
+    public Fragment getItem(int i) {
+
+        return arrayList.get(i).getFragment();
+    }
+
+    @Override
+    public int getCount() {
+        return arrayList.size();
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return arrayList.get(position).getTitle();
+    }
+}
+
+MainActivity Code
+
+public class MainActivity extends AppCompatActivity {
+TabLayout tab;
+ViewPager viewPager;
+ArrayList<TabModel> arrayList=new ArrayList<>();
+TabAdapter adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        tab=(TabLayout)findViewById(R.id.tab) ;
+        viewPager=(ViewPager)findViewById(R.id.viewPager);
+        arrayList.add(new TabModel(new OneFragment(),"One"));
+        arrayList.add(new TabModel(new TwoFragment(),"Two"));
+        arrayList.add(new TabModel(new ThreeFragment(),"Three"));
+        adapter=new TabAdapter(getSupportFragmentManager(),arrayList);
+        viewPager.setAdapter(adapter);
+        tab.setupWithViewPager(viewPager);
+//for tab with icon
+/*tab.getTabAt(0).setIcon(tabIcons[0]);
+tab.getTabAt(1).setIcon(tabIcons[1]);
+tab.getTabAt(2).setIcon(tabIcons[2]);*/
+
+    }
+}
+
+for tab with icon only
+
+the getPageTitle will return null
+
+@Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

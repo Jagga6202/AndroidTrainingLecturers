@@ -1,0 +1,236 @@
+Date 12th march
+
+Android Service
+
+A service is a component which runs in the background without direct interaction with the user. As the service has no user interface, it is not bound to the lifecycle of an activity.
+Services are used for repetitive and potentially long running operations, i.e., Internet downloads etc.
+
+There can be two forms of a service.
+1)Started
+
+A service is started when component (like activity) calls startService() method, now it runs in the background indefinitely. It is stopped by stopService() method. The service can stop itself by calling the stopSelf() method
+
+2)Bound
+
+A service is bound when another component (e.g. client) calls bindService() method. The client can unbind the service by calling the unbindService() method.
+
+
+Started Service Example
+
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="58dp"
+        android:text="Start"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="279dp"
+        android:text="Stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+</android.support.constraint.ConstraintLayout>
+
+MyService Class
+
+public class MyService extends Service {
+   private MediaPlayer mediaPlayer;
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        mediaPlayer=MediaPlayer.create(this,Settings.System.DEFAULT_RINGTONE_URI);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+        Toast.makeText(this, "Playing", Toast.LENGTH_SHORT).show();
+        return START_STICKY;
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+       return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.stop();
+        Toast.makeText(this, "Stopped", Toast.LENGTH_SHORT).show();
+    }
+}
+
+
+MainActivity Class
+
+public class MainActivity extends AppCompatActivity {
+Button button,button2;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button=(Button)findViewById(R.id.button);
+        button2=(Button)findViewById(R.id.button2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              startService(new Intent(MainActivity.this,MyService.class));
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopService(new Intent(MainActivity.this,MyService.class));
+            }
+        });
+    }
+}
+
+declare the service in the manifest file in side application tag.
+
+<service
+    android:name=".MyService"
+  />
+
+
+Bind Service example
+
+activity_main layout
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginBottom="406dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
+
+
+Myservice class
+
+public class BindServiceEx extends Service {
+
+    IBinder iBinder=new MyLocalBinder();
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        return iBinder;
+    }
+
+
+    public class MyLocalBinder extends Binder{
+        BindServiceEx getService(){
+            return BindServiceEx.this;
+        }
+    }
+
+    public Date getCurrentDate(){
+
+        return Calendar.getInstance().getTime();
+    }
+}
+
+
+MainActivity Class
+
+public class Main2Activity extends AppCompatActivity {
+    Button button3;
+    BindServiceEx localService;
+    private boolean isBound = false;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        button3=(Button)findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             Date date=localService.getCurrentDate();
+                Toast.makeText(localService, ""+date, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent=new Intent(this,BindServiceEx.class);
+        bindService(intent,connection,Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(isBound){
+            unbindService(connection);
+            isBound=false;
+        }
+    }
+
+    private ServiceConnection connection =new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            BindServiceEx.MyLocalBinder binder=(BindServiceEx.MyLocalBinder)service;
+            localService=binder.getService();
+            isBound=true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+          isBound=false;
+        }
+    };
+}
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

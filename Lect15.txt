@@ -1,0 +1,88 @@
+Date 5th February
+
+LinearLayout and RelativeLayout
+
+Linear Layout:
+
+A linear layout displays its views next to each other either vertically or horizontally. So, if you define views in a row, they will be displayed one after the other. You need to specify orientation to define whether layout is vertical or horizontal. The following attributes are used to define linear layouts:
+
+1)Weight: It specifies how much space each view spans relative to others. For example, in an e-mail application, you can give less weight to ‘To’ and ‘Subject’, and more weight to ‘Message’.
+
+2)Gravity: It defines placement of a view’s contents. For example, if a view spans entire screen, but has only one line of text, then you can decide whether it should be displayed on top, center or bottom.
+
+3)Layout Gravity: It defines the placement of the view itself.
+
+Example
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical" >
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/to" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/subject" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:hint="@string/message" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="@string/send" />
+</LinearLayout>
+
+Relative Layout:
+
+A relative layout displays its views relative to one another, so order is not that important. You can define the top most view at the end of the layout and provide details to show it on top left. The following attributes are used to define relative layouts:
+
+1)Position relative to screen: You can align a view relative to screen using alignParentTop, centerHorizontal etc.
+
+2)Position relative to other views: You can align a view relative to another view using above, below, toLeftOf etc.
+
+3)Margins: You can provide margins using marginTop, marginLeft etc.
+
+Example
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/reminder" />
+    <Spinner
+        android:id="@+id/dates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/times" />
+    <Spinner
+        android:id="@id/times"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignParentRight="true" />
+    <Button
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/times"
+        android:layout_alignParentRight="true"
+        android:text="@string/done" />
+</RelativeLayout>
+

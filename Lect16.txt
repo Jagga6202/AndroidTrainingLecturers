@@ -1,0 +1,77 @@
+Date 6th February
+
+What is Activity and Activity Lifecycle
+
+An activity is an application component that provides a screen with which users can interact in order to do something, such as dial the phone, take a photo, send an email, or view a map. Each activity is given a window in which to draw its user interface.
+
+Its a predefined class in Android and in order to have any UI components in your app you must inherit this class.
+
+
+Android Activity Lifecycle is controlled by 7 methods.
+
+1)onCreate()
+   This is the first callback and called when the activity is first created.
+2)onStart()
+   This callback is called when the activity becomes visible to the user.
+3)onResume()
+   This is called when the user starts interacting with the application.
+4)onPause()
+   The paused activity does not receive user input and cannot execute any code and called 
+    when the current activity is being paused and the previous activity is being resumed.                             
+5)onStop()
+    This callback is called when the activity is no longer visible.
+6)onRestart()
+    This callback is called when the activity restarts after stopping it.
+7)onDestroy()
+   This callback is called before the activity is destroyed by the system.
+
+Example
+private void printLog(String title,String data){
+    Log.e(title,data);
+}
+
+private String app_name="Lect16";
+
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    printLog(app_name,"onCreate Called");
+}
+
+@Override
+protected void onStart() {
+    super.onStart();
+    printLog(app_name,"onStart Called");
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    printLog(app_name,"onResume Called");
+}
+
+@Override
+protected void onPause() {
+    super.onPause();
+    printLog(app_name,"onPause Called");
+}
+
+@Override
+protected void onStop() {
+    super.onStop();
+    printLog(app_name,"onStop Called");
+}
+
+@Override
+protected void onRestart() {
+    super.onRestart();
+    printLog(app_name,"OnRestart Called");
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    printLog(app_name,"onDestroy Called");
+}

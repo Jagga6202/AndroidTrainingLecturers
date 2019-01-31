@@ -1,0 +1,184 @@
+Date 13th February
+
+RecyclerView
+
+RecyclerView is an advanced and flexible version of ListView and GridView. It is a container used for displaying large amount of data sets that can be scrolled very efficiently by maintaining a limited number of views. RecyclerView was introduced in Material Design in API level 21.
+
+RecyclerView doesnt comes with default adapter you need to create your own adapter.
+
+implementation 'com.android.support:design:28.0.0'
+this must be added to use Recyclerview
+
+
+1)Add com.android.support:design:28.0.0 library to your project
+
+2)In main activity layout take a recyclerview
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+</LinearLayout>
+
+3)Make Model class
+
+public class RecModel {
+    public int getImage() {
+        return image;
+    }
+    public void setImage(int image) {
+        this.image = image;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    int image;
+    String name;
+
+    public RecModel(int image, String name) {
+        this.image = image;
+        this.name = name;
+    }
+}
+
+4)Single item view layout
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/top"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="10">
+    <ImageView
+        android:id="@+id/icons"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center"
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:layout_gravity="center_vertical"
+        android:padding="16dp"
+        android:layout_marginRight="16dp"
+        android:gravity="center"
+        android:text="HEllo"/>
+</LinearLayout>
+
+5)Custom Adapter
+
+public class RecAdapter extends RecyclerView.Adapter<RecAdapter.MyViewHolder> {
+    ArrayList<RecModel> arrayList;
+    Context mContext;
+
+    public RecAdapter(ArrayList<RecModel> arrayList, Context mContext) {
+        this.arrayList = arrayList;
+        this.mContext = mContext;
+    }
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+         View view=LayoutInflater.from(mContext).inflate(R.layout.items,viewGroup,false);
+
+        return new MyViewHolder(view);
+    }
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+           myViewHolder.name.setText(arrayList.get(i).getName());
+           myViewHolder.icons.setImageResource(arrayList.get(i).getImage());
+    }
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        ImageView icons;
+        TextView name;
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            icons=(ImageView)itemView.findViewById(R.id.icons);
+            name=(TextView)itemView.findViewById(R.id.name);
+        }
+    }
+}
+
+6)MainActivity Code
+
+public class MainActivity extends AppCompatActivity {
+RecyclerView recyclerView;
+ArrayList<RecModel> arrayList;
+RecAdapter adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        recyclerView=(RecyclerView)findViewById(R.id.rec);
+        arrayList=new ArrayList<>();
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Jagga"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Parul"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Ram"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Sham"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Radhe"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Rajesh"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Ashish"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Vicky"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Raj"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Rahul"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Rohit"));
+        arrayList.add(new RecModel(R.mipmap.ic_launcher,"Jordan"));
+        adapter=new RecAdapter(arrayList,this);
+        recyclerView.setAdapter(adapter);
+        //To set the orientation of recyclerview
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //To add Divider line
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+    }
+}
+
+
+
+/* public void bind(final RecModel items, final OnItemClickListener listener){
+     itemView.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+           listener.onItemClick(items);
+         }
+     });
+ }*/
+
+//myViewHolder.bind(arrayList.get(i),listener);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,131 @@
+                  Date 27th February
+
+
+
+ViewFlipper
+
+ViewFlipper switches smoothly between two or more views (like TextView, ImageView or any layout) and thus provides a way of transitioning from one view to another through appropriate animations.
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<ViewFlipper
+    android:id="@+id/viewFlipper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+               android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+               android:padding="16dp"
+        android:layout_margin="16dp"
+        android:scaleType="fitXY"
+        android:layout_gravity="center"/>
+</ViewFlipper>
+</LinearLayout>
+
+public class MainActivity extends AppCompatActivity {
+  int [] images={R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.five};
+  ViewFlipper viewFlipper;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        viewFlipper=(ViewFlipper)findViewById(R.id.viewFlipper);
+
+        for(int i=0;i<images.length;i++){
+            ImageView imageView=new ImageView(this);
+            imageView.setImageResource(images[i]);
+            viewFlipper.addView(imageView);
+        }
+        viewFlipper.startFlipping();
+    }
+}
+
+AdapterViewFlipper
+
+difference is ViewFlipper we typically declare all children up front, and there is no recycling concept but in AdapterViewFlipper, we use an Adapter to fill data (as we used in ListView, Spinner, etc), so the children are determined on the fly and the views representing the children can be recycled.
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+    <AdapterViewFlipper
+        android:id="@+id/adpview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </AdapterViewFlipper>
+
+</LinearLayout>
+
+
+public class AdAdapter extends ArrayAdapter {
+    ArrayList<AdModel> arrayList;
+    Context context;
+
+    public AdAdapter( Context context, ArrayList<AdModel> arrayList) {
+        super(context, R.layout.items);
+        this.arrayList=arrayList;
+        this.context=context;
+    }
+
+
+    @Override
+    public View getView(int position,  View convertView,  ViewGroup parent) {
+        View view=LayoutInflater.from(context).inflate(R.layout.items,parent,false);
+        ImageView imageView=(ImageView)view.findViewById(R.id.imageView);
+        TextView textView=(TextView) view.findViewById(R.id.textView);
+        imageView.setImageResource(arrayList.get(position).getImage());
+        textView.setText(arrayList.get(position).getName());
+        return view;
+    }
+
+    @Override
+    public int getCount() {
+        return arrayList.size();
+    }
+}
+
+
+public class Main2Activity extends AppCompatActivity {
+AdapterViewFlipper adpview;
+ArrayList<AdModel> arrayList=new ArrayList<>();
+AdAdapter adAdapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        adpview=(AdapterViewFlipper)findViewById(R.id.adpview);
+        arrayList.add(new AdModel("One",R.drawable.one));
+        arrayList.add(new AdModel("Two",R.drawable.two));
+        arrayList.add(new AdModel("Three",R.drawable.three));
+        arrayList.add(new AdModel("Four",R.drawable.five));
+        adAdapter=new AdAdapter(this,arrayList);
+        adpview.setAdapter(adAdapter);
+        adpview.startFlipping();
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

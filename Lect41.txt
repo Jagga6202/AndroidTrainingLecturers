@@ -1,0 +1,477 @@
+Date 25th march
+
+Android Animation
+
+Android Animation is used to give the UI a rich look and feel. Animations in android apps can be performed through XML or android code. 
+
+Android Animation Example XML
+
+We create a resource directory under the res folder names anim to keep all the xml files containing the animation logic. 
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnFadeIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Fade In" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Fade In"
+            android:id="@+id/txt_fade_in"
+            android:layout_alignBottom="@+id/btnFadeIn"
+            android:layout_alignLeft="@+id/txt_fade_out"
+            android:layout_alignStart="@+id/txt_fade_out" />
+
+
+        <Button
+            android:id="@+id/btnFadeOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnFadeIn"
+            android:text="Fade Out" />
+
+
+        <Button
+            android:id="@+id/btnCrossFade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnFadeOut"
+            android:text="Cross Fade" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cross Fade In"
+            android:id="@+id/txt_out"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignTop="@+id/txt_in"
+            android:layout_alignLeft="@+id/txt_in"
+            android:layout_alignStart="@+id/txt_in" />
+
+        <Button
+            android:id="@+id/btnBlink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnCrossFade"
+            android:text="Blink" />
+
+        <Button
+            android:id="@+id/btnZoomIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnBlink"
+            android:text="Zoom In" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Blink"
+            android:id="@+id/txt_blink"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignBottom="@+id/btnBlink"
+            android:layout_alignLeft="@+id/txt_zoom_in"
+            android:layout_alignStart="@+id/txt_zoom_in" />
+
+        <Button
+            android:id="@+id/btnZoomOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnZoomIn"
+            android:text="Zoom Out" />
+
+        <Button
+            android:id="@+id/btnRotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnZoomOut"
+            android:text="Rotate" />
+
+        <Button
+            android:id="@+id/btnMove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnRotate"
+            android:text="Move" />
+
+        <Button
+            android:id="@+id/btnSlideUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnMove"
+            android:text="Slide Up" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Fade Out"
+            android:id="@+id/txt_fade_out"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignBottom="@+id/btnFadeOut"
+            android:layout_alignLeft="@+id/txt_in"
+            android:layout_alignStart="@+id/txt_in" />
+
+        <Button
+            android:id="@+id/btnSlideDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnSlideUp"
+            android:text="Slide Down" />
+
+        <Button
+            android:id="@+id/btnBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnSlideDown"
+            android:text="Bounce" />
+
+        <Button
+            android:id="@+id/btnSequential"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/btnBounce"
+            android:text="Sequential Animation" />
+
+        <Button
+            android:id="@+id/btnTogether"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnSequential"
+            android:layout_margin="5dp"
+            android:text="Together Animation" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cross Fade Out"
+            android:id="@+id/txt_in"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignBottom="@+id/btnCrossFade"
+            android:layout_alignLeft="@+id/txt_blink"
+            android:layout_alignStart="@+id/txt_blink" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Zoom In"
+            android:id="@+id/txt_zoom_in"
+            android:layout_alignBottom="@+id/btnZoomIn"
+            android:layout_alignLeft="@+id/txt_zoom_out"
+            android:layout_alignStart="@+id/txt_zoom_out" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Zoom Out"
+            android:id="@+id/txt_zoom_out"
+            android:layout_alignBottom="@+id/btnZoomOut"
+            android:layout_toRightOf="@+id/btnSequential"
+            android:layout_toEndOf="@+id/btnSequential" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Rotate"
+            android:id="@+id/txt_rotate"
+            android:layout_above="@+id/btnMove"
+            android:layout_toRightOf="@+id/btnSequential"
+            android:layout_toEndOf="@+id/btnSequential" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Move"
+            android:id="@+id/txt_move"
+            android:layout_alignBottom="@+id/btnMove"
+            android:layout_alignLeft="@+id/txt_slide_up"
+            android:layout_alignStart="@+id/txt_slide_up" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Slide Up"
+            android:id="@+id/txt_slide_up"
+            android:layout_alignBottom="@+id/btnSlideUp"
+            android:layout_toRightOf="@+id/btnSequential"
+            android:layout_toEndOf="@+id/btnSequential" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Slide Down"
+            android:id="@+id/txt_slide_down"
+            android:layout_alignBottom="@+id/btnSlideDown"
+            android:layout_alignLeft="@+id/txt_slide_up"
+            android:layout_alignStart="@+id/txt_slide_up" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Bounce"
+            android:id="@+id/txt_bounce"
+            android:layout_alignBottom="@+id/btnBounce"
+            android:layout_alignLeft="@+id/txt_slide_down"
+            android:layout_alignStart="@+id/txt_slide_down" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Sequential"
+            android:id="@+id/txt_seq"
+            android:layout_alignBottom="@+id/btnSequential"
+            android:layout_alignLeft="@+id/txt_bounce"
+            android:layout_alignStart="@+id/txt_bounce" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Together"
+            android:id="@+id/txt_tog"
+            android:layout_alignBottom="@+id/btnTogether"
+            android:layout_toRightOf="@+id/btnSequential"
+            android:layout_toEndOf="@+id/btnSequential" />
+
+    </RelativeLayout>
+
+</ScrollView>
+</RelativeLayout>
+
+
+public class MainActivity extends AppCompatActivity {
+    Button btnFadeIn, btnFadeOut, btnCrossFade, btnBlink, btnZoomIn,
+            btnZoomOut, btnRotate, btnMove, btnSlideUp, btnSlideDown,
+            btnBounce, btnSequential, btnTogether;
+    Animation animFadeIn,animFadeOut,animBlink,animZoomIn,animZoomOut,animRotate
+            ,animMove,animSlideUp,animSlideDown,animBounce,animSequential,animTogether,animCrossFadeIn,animCrossFadeOut;
+    TextView txtFadeIn,txtFadeOut,txtBlink,txtZoomIn,txtZoomOut,txtRotate,txtMove,txtSlideUp,
+            txtSlideDown,txtBounce,txtSeq,txtTog,txtIn,txtOut;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btnFadeIn = (Button) findViewById(R.id.btnFadeIn);
+        btnFadeOut = (Button) findViewById(R.id.btnFadeOut);
+        btnCrossFade = (Button) findViewById(R.id.btnCrossFade);
+        btnBlink = (Button) findViewById(R.id.btnBlink);
+        btnZoomIn = (Button) findViewById(R.id.btnZoomIn);
+        btnZoomOut = (Button) findViewById(R.id.btnZoomOut);
+        btnRotate = (Button) findViewById(R.id.btnRotate);
+        btnMove = (Button) findViewById(R.id.btnMove);
+        btnSlideUp = (Button) findViewById(R.id.btnSlideUp);
+        btnSlideDown = (Button) findViewById(R.id.btnSlideDown);
+        btnBounce = (Button) findViewById(R.id.btnBounce);
+        btnSequential = (Button) findViewById(R.id.btnSequential);
+        btnTogether = (Button) findViewById(R.id.btnTogether);
+        txtFadeIn=(TextView)findViewById(R.id.txt_fade_in);
+        txtFadeOut=(TextView)findViewById(R.id.txt_fade_out);
+        txtBlink=(TextView)findViewById(R.id.txt_blink);
+        txtZoomIn=(TextView)findViewById(R.id.txt_zoom_in);
+        txtZoomOut=(TextView)findViewById(R.id.txt_zoom_out);
+        txtRotate=(TextView)findViewById(R.id.txt_rotate);
+        txtMove=(TextView)findViewById(R.id.txt_move);
+        txtSlideUp=(TextView)findViewById(R.id.txt_slide_up);
+        txtSlideDown=(TextView)findViewById(R.id.txt_slide_down);
+        txtBounce=(TextView)findViewById(R.id.txt_bounce);
+        txtSeq=(TextView)findViewById(R.id.txt_seq);
+        txtTog=(TextView)findViewById(R.id.txt_tog);
+        txtIn=(TextView)findViewById(R.id.txt_in);
+        txtOut=(TextView)findViewById(R.id.txt_out);
+
+        animFadeIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_in);
+        // fade in
+        btnFadeIn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                txtFadeIn.setVisibility(View.VISIBLE);
+                txtFadeIn.startAnimation(animFadeIn);
+            }
+        });
+
+        animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_out);
+
+        // fade out
+        btnFadeOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtFadeOut.setVisibility(View.VISIBLE);
+                txtFadeOut.startAnimation(animFadeOut);
+            }
+        });
+        animCrossFadeIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_in);
+        animCrossFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.fade_out);
+        // cross fade
+        btnCrossFade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtOut.setVisibility(View.VISIBLE);
+                // start fade in animation
+                txtOut.startAnimation(animCrossFadeIn);
+
+                // start fade out animation
+                txtIn.startAnimation(animCrossFadeOut);
+            }
+        });
+        animBlink = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.blink);
+        // blink
+        btnBlink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtBlink.setVisibility(View.VISIBLE);
+                txtBlink.startAnimation(animBlink);
+            }
+        });
+
+        animZoomIn = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.zoom_in);
+        // Zoom In
+        btnZoomIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtZoomIn.setVisibility(View.VISIBLE);
+                txtZoomIn.startAnimation(animZoomIn);
+            }
+        });
+        animZoomOut = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.zoom_out);
+        // Zoom Out
+        btnZoomOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtZoomOut.setVisibility(View.VISIBLE);
+                txtZoomOut.startAnimation(animZoomOut);
+            }
+        });
+        animRotate = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.rotate);
+
+        // Rotate
+        btnRotate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtRotate.startAnimation(animRotate);
+            }
+        });
+        animMove = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.move);
+        // Move
+        btnMove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtMove.startAnimation(animMove);
+            }
+        });
+        animSlideUp = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_up);
+        // Slide Up
+        btnSlideUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtSlideUp.startAnimation(animSlideUp);
+            }
+        });
+        animSlideDown = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_down);
+        // Slide Down
+        btnSlideDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtSlideDown.startAnimation(animSlideDown);
+            }
+        });
+        animBounce = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.bounce);
+        // Slide Down
+        btnBounce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtBounce.startAnimation(animBounce);
+            }
+        });
+        animSequential = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.sequential);
+        // Sequential
+        btnSequential.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                txtSeq.startAnimation(animSequential);
+            }
+        });
+        animTogether = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.together);
+
+        // Together
+        btnTogether.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtTog.startAnimation(animTogether);
+            }
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

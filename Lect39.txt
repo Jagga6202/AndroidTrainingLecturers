@@ -1,0 +1,140 @@
+Date 20th march
+
+WebView,MediaApi
+
+
+WebView is a view that display web pages inside your application. You can also specify HTML string and can show it inside your application using WebView. WebView makes turns your application to a web application.
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
+
+public class MainActivity extends AppCompatActivity {
+WebView webView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        webView=(WebView)findViewById(R.id.webView);
+
+       /* String data = "<html><body><h1>Hello, Html in Android!</h1></body></html>";
+        webView.loadData(data, "text/html", "UTF-8");*/
+       String url="https://www.google.com/";
+       webView.loadUrl(url);
+    }
+}
+
+MediaPlayer
+
+The android.media.MediaPlayer class is used to control the audio or video files.
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:text="Audio Controller" />
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="48dp"
+        android:text="start" />
+
+    <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:text="pause" />
+
+    <Button
+        android:id="@+id/button3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:text="stop" />
+</RelativeLayout>
+
+public class Main2Activity extends AppCompatActivity {
+    Button start,pause,stop;
+    MediaPlayer mp;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        start=(Button)findViewById(R.id.button1);
+        pause=(Button)findViewById(R.id.button2);
+        stop=(Button)findViewById(R.id.button3);
+        //creating media player
+
+
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp=MediaPlayer.create(getApplicationContext(),R.raw.test);
+                mp.start();
+            }
+        });
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            mp.pause();
+            }
+        });
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              mp.stop();
+            }
+        });
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

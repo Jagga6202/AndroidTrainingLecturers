@@ -1,0 +1,98 @@
+Date 19th march
+
+Splash Screen
+
+Splash Screen is most commonly the first startup screen which appears when App is opened. In other words, it is a simple constant screen for a fixed amount of time which is used to display the company logo, name, advertising content etc.
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SpalshActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="225dp"
+        android:layout_height="231dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="79dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="102dp"
+        android:text="Splash Screen"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+</android.support.constraint.ConstraintLayout>
+
+
+public class SpalshActivity extends AppCompatActivity {
+private Handler handler;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_spalsh);
+       /* handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent=new Intent(SpalshActivity.this,MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        },5000);*/
+      Thread thread=new Thread(){
+          @Override
+          public void run() {
+              super.run();
+              try{
+                  sleep(5000);
+                  Intent intent=new Intent(SpalshActivity.this,MainActivity.class);
+                  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  startActivity(intent);
+                  finish();
+              }catch (InterruptedException e){
+                  e.printStackTrace();
+              }
+
+          }
+      };
+      thread.start();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

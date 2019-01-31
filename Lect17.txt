@@ -1,0 +1,22 @@
+Date 7th February
+
+Intent 
+
+Android Intent is the message that is passed between components such as activities, content providers, broadcast receivers, services etc.
+
+
+
+There are two types of intent
+1)Implicit Intent
+  In android, Implicit Intents won’t specify any name of the component to start, instead it declare an action to perform and it allow a component from other app to handle it.
+
+Intent intent=new Intent(Intent.ACTION_VIEW);
+intent.setData(Uri.parse("https://www.google.com"));
+startActivity(intent);
+
+
+2)Explicit Intent
+
+Explicit intents explicitly specify the name of component to be invoked by an activity and we use explicit intents to start a component in our own app.
+
+

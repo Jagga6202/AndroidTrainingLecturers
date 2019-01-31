@@ -1,0 +1,11 @@
+Date 23nd January:-
+
+Spinner
+Android spinner is like the drop down menu with multiple values from which the end user can select only one value.
+Android spinner is associated with AdapterView. So you need to use one of the adapter classes with spinner.
+Adapter is  a bridge between an AdapterView and the underlying data for that view.
+An AdapterView is a group of widgets (aka view) components in Android that include the ListView, Spinner, and GridView.
+
+In Spinner Example we will need to create a list of country and user can select any one from them.we can use the default adapter or custom adapter for that.
+
+ 

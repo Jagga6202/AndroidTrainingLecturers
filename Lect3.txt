@@ -1,0 +1,30 @@
+     Date 9th January:-
+Abstraction
+Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+There are two ways to achieve abstraction in java
+1)Abstract class 
+A class which is declared as abstract is known as an abstract class. It can have abstract and non-abstract methods. It needs to be extended and its method implemented. It cannot be instantiated.
+abstract class Bike{  
+  abstract void run();  
+}  
+class Honda4 extends Bike{  
+void run(){System.out.println("running safely");}  
+public static void main(String args[]){  
+ Bike obj = new Honda4();  
+ obj.run();  
+}  
+}  
+2)Interface 
+The interface in Java is a mechanism to achieve abstraction. There can be only abstract methods in the Java interface, not method body. It is used to achieve abstraction and multiple inheritance in Java.
+interface printable{  
+void print();  
+}  
+class A6 implements printable{  
+public void print(){System.out.println("Hello");}  
+  
+public static void main(String args[]){  
+A6 obj = new A6();  
+obj.print();  
+ }  
+} 
+

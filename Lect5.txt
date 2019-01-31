@@ -1,0 +1,49 @@
+Date 14th January:-
+What is Android
+
+Android is a software package and linux based operating system for mobile devices such as tablet computers and smartphones.
+It is developed by Google and later the OHA (Open Handset Alliance). 
+
+Features of Android
+
+1)Beautiful UI
+2)Connectivity
+3)Media support
+4)Messaging
+5)Web browser
+6)Multi-tasking
+
+Android applications are usually developed in the Java language using the Android Software Development Kit.
+
+Categories of Android applications
+1)Entertainment
+2)Tools
+3)Communication
+4)Productivity
+5)Personalization
+6)Music and Audio
+7)Social
+8)Media and Video
+9)Travel 
+
+History of Android
+
+The version history of the Android mobile operating system began with the public release of the Android beta on November 5, 2007. The first commercial version, Android 1.0, was released on September 23, 2008.
+
+codename    Version        date             ApiLevel
+(Nocodename)      1.0                              September 23, 2008                     1
+Petit Four	     1.1		         February 9, 2009	                      2
+Cupcake	     1.5		        April 27, 2009		      3
+Donut		     1.6		       September 15, 2009	                      4
+Eclair	                2.0 – 2.1	       October 26, 2009	                      5 – 7
+Froyo	               2.2 – 2.2.3	       May 20, 2010	                      8
+Gingerbread 	2.3 – 2.3.7	       December 6, 2010	                      9 – 10
+Honeycomb	3.0 – 3.2.6	       February 22, 2011	                     11 – 13
+ICS		4.0 – 4.0.4	       October 18, 2011	                     14 – 15
+Jelly Bean	4.1 – 4.3.1	       July 9, 2012	                                     16 – 18
+KitKat	                4.4 – 4.4.4	      October 31, 2013	                     19 – 20
+Lollipop	5.0 – 5.1.1	     November 12, 2014	                     21 – 22
+Marshmallow	6.0 – 6.0.1	     October 5, 2015	                    23
+Nougat	                7.0 – 7.1.2	    August 22, 2016	                    24 – 25
+Oreo	                 8.0 – 8.1	   August 21, 2017	                    26 – 27
+Pie	                 9.0		  August 6, 2018	                                    28

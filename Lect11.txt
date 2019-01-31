@@ -1,0 +1,59 @@
+Date 28th January
+ProgressBar
+Android ProgressBar is a graphical view indicator that shows some progress. Android progress bar displays a bar representing the completing of the task. 
+In Example We will show progess update 1 to 100 for this we will use A Background Thread and a Handler 
+Xml Part
+This is horizontal ProgressBar
+<ProgressBar
+    android:id="@+id/progressBar"
+    style="?android:attr/progressBarStyleHorizontal"
+android:progress="1"
+/>
+This is Circular ProgressBar
+<ProgressBar
+    android:id="@+id/progressBar_cyclic"
+    style="?android:attr/progressBarStyle"/>
+Java Part
+ProgressBar progressBar=(ProgressBar)findViewById(R.id.progressBar);
+ProgressBar progressBar_cyclic=(ProgressBar)findViewById(R.id.progressBar_cyclic);
+Handler handler=new Handler();
+new Thread(new Runnable() {
+    @Override
+    public void run() {
+        while (progressStatus<100){
+            progressStatus+=1;
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                  progressBar.setProgress(progressStatus);
+                  textView.setText(progressStatus+"/"+progressBar.getMax());
+if(progressStatus==100){
+    progressBar_cyclic.setVisibility(View.GONE);
+}
+
+                }
+            });
+            try{
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+}).start();
+
+Analog Clock & Digital Clock
+The android.widget.AnalogClock and android.widget.DigitalClock classes provides the functionality to display analog and digital clocks.
+XML Part
+<AnalogClock  
+        android:id="@+id/analogClock1"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+       />  
+  
+    <DigitalClock  
+        android:id="@+id/digitalClock1"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+       />  

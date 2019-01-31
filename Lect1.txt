@@ -1,0 +1,150 @@
+Date 7th January:-
+What is java:-
+Java is a programming language and a platform.
+Java is a high level, robust, object-oriented and secure programming language.
+Download java from Oracle site and install
+to Check if java is installed in the system open cmd and type command 
+  java -version
+HelloWord Simple Java program
+class Simple{  
+    public static void main(String args[]){  
+     System.out.println("Hello Java");  
+    }  
+}  
+save this as Simple.java
+First Complie using command javac Simple.java
+To run Use Command java Simple
+Java if Statement
+The Java if statement tests the condition. It executes the if block if condition is true.
+public class IfExample {  
+public static void main(String[] args) {  
+    //defining an 'age' variable  
+    int age=20;  
+    //checking the age  
+    if(age>18){  
+        System.out.print("Age is greater than 18");  
+    }  
+}  
+}  
+Java if-else Statement
+The Java if-else statement also tests the condition. It executes the if block if condition is true otherwise else block is executed.
+public class IfElseExample {  
+public static void main(String[] args) {  
+    //defining a variable  
+    int number=13;  
+    //Check if the number is divisible by 2 or not  
+    if(number%2==0){  
+        System.out.println("even number");  
+    }else{  
+        System.out.println("odd number");  
+    }  
+}  
+}  
+Java if-else-if ladder Statement
+The if-else-if ladder statement executes one condition from multiple statements.
+public class IfElseIfExample {  
+public static void main(String[] args) {  
+    int marks=65;  
+      
+    if(marks<50){  
+        System.out.println("fail");  
+    }  
+    else if(marks>=50 && marks<60){  
+        System.out.println("D grade");  
+    }  
+    else if(marks>=60 && marks<70){  
+        System.out.println("C grade");  
+    }  
+    else if(marks>=70 && marks<80){  
+        System.out.println("B grade");  
+    }  
+    else if(marks>=80 && marks<90){  
+        System.out.println("A grade");  
+    }else if(marks>=90 && marks<100){  
+        System.out.println("A+ grade");  
+    }else{  
+        System.out.println("Invalid!");  
+    }  
+}  
+}  
+Java Switch Statement
+The Java switch statement executes one statement from multiple conditions. It is like if-else-if ladder statement. 
+public class SwitchExample {  
+public static void main(String[] args) {  
+    //Declaring a variable for switch expression  
+    int number=20;  
+    //Switch expression  
+    switch(number){  
+    //Case statements  
+    case 10: System.out.println("10");  
+    break;  
+    case 20: System.out.println("20");  
+    break;  
+    case 30: System.out.println("30");  
+    break;  
+    //Default case statement  
+    default:System.out.println("Not in 10, 20 or 30");  
+    }  
+}  
+}  
+Java For Loop
+The Java for loop is used to iterate a part of the program several times. If the number of iteration is fixed, it is recommended to use for loop.
+public class ForExample {  
+public static void main(String[] args) {  
+    //Code of Java for loop  
+    for(int i=1;i<=10;i++){  
+        System.out.println(i);  
+    }  
+}  
+}
+Java While Loop
+The Java while loop is used to iterate a part of the program several times. If the number of iteration is not fixed, it is recommended to use while loop.
+public class WhileExample {  
+public static void main(String[] args) {  
+    int i=1;  
+    while(i<=10){  
+        System.out.println(i);  
+    i++;  
+    }  
+}  
+}  
+
+Java do-while Loop
+The Java do-while loop is used to iterate a part of the program several times. If the number of iteration is not fixed and you must have to execute the loop at least once, it is recommended to use do-while loop.
+public class DoWhileExample {  
+public static void main(String[] args) {  
+    int i=1;  
+    do{  
+        System.out.println(i);  
+    i++;  
+    }while(i<=10);  
+}  
+}  
+Java Break Statement
+The Java break is used to break loop or switch statement. It breaks the current flow of the program at specified condition. In case of inner loop, it breaks only inner loop.
+public class BreakExample {  
+public static void main(String[] args) {  
+    //using for loop  
+    for(int i=1;i<=10;i++){  
+        if(i==5){  
+            //breaking the loop  
+            break;  
+        }  
+        System.out.println(i);  
+    }  
+}  
+} 
+Java Continue Statement
+The continue statement is used in loop control structure when you need to jump to the next iteration of the loop immediately. It can be used with for loop or while loop.
+public class ContinueExample {  
+public static void main(String[] args) {  
+    //for loop  
+    for(int i=1;i<=10;i++){  
+        if(i==5){  
+            //using continue statement  
+            continue;//it will skip the rest statement  
+        }  
+        System.out.println(i);  
+    }  
+}  
+}  

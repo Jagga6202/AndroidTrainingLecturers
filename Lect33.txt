@@ -1,0 +1,368 @@
+                  Date 11th march
+
+
+
+Sqlite
+
+SQLite is a Structure query base database, open source, light weight, no network access and standalone database. It support embedded relational database features.
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@android:color/holo_blue_dark">
+
+    <TextView
+        android:text="Username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:id="@+id/textView"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editName"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:hint="Enter Name"
+        android:gravity="center_vertical|center" />
+
+    <TextView
+        android:text="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:id="@+id/textView2"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        android:layout_below="@+id/editName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:hint="Enter Password" />
+
+    <Button
+        android:text="View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:textSize="18sp"
+        android:onClick="viewdata"
+        android:textStyle="bold|italic"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignRight="@+id/button4"
+        android:layout_alignEnd="@+id/button4" />
+
+    <Button
+        android:text="Add user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        android:onClick="addUser"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_below="@+id/editPass"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp" />
+
+    <Button
+        android:text="Update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:onClick="update"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/editText3"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4"
+        android:layout_marginTop="13dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText6"
+        android:layout_alignTop="@+id/button4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:freezesText="false"
+        android:hint="Enter Name to Delete Data"
+        android:layout_toLeftOf="@+id/button2"
+        android:layout_toStartOf="@+id/button2" />
+
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp"
+        android:id="@+id/button4"
+        android:onClick="delete"
+        android:textStyle="normal|bold"
+        tools:ignore="RelativeOverlap"
+        android:layout_marginBottom="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="47dp"
+        android:id="@+id/editText3"
+        android:textStyle="bold|italic"
+        android:textSize="14sp"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:hint="Current Name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginTop="11dp"
+        android:id="@+id/editPass"
+        android:hint="Enter Password"
+        android:gravity="center_vertical|center"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAllCaps="false"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:textStyle="bold|italic"
+        android:textSize="14sp"
+        android:hint="New Name"
+        android:layout_alignTop="@+id/button3"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_alignStart="@+id/editText3"
+        android:layout_marginTop="32dp" />
+</RelativeLayout>
+
+
+public class myDbHelper extends SQLiteOpenHelper {
+
+    private static final String DATABASE_NAME = "myDatabase";    // Database Name
+    private static final String TABLE_NAME = "myTable";   // Table Name
+    private static final int DATABASE_Version = 1;   // Database Version
+    private static final String UID="_id";     // Column I (Primary Key)
+    private static final String NAME = "Name";    //Column II
+    private static final String MyPASSWORD= "Password";    // Column III
+    private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+
+            " ("+UID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255) ,"+ MyPASSWORD+" VARCHAR(225));";
+    private static final String DROP_TABLE ="DROP TABLE IF EXISTS "+TABLE_NAME;
+    private Context context;
+
+    public myDbHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_Version);
+        this.context=context;
+    }
+
+    public void onCreate(SQLiteDatabase db) {
+
+        try {
+            db.execSQL(CREATE_TABLE);
+        } catch (Exception e) {
+            Toast.makeText(context, ""+e, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        try {
+            Toast.makeText(context, "OnUpgrade", Toast.LENGTH_SHORT).show();
+            db.execSQL(DROP_TABLE);
+            onCreate(db);
+        }catch (Exception e) {
+            Toast.makeText(context, ""+e, Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    public long insertData(String name, String pass)
+    {
+        SQLiteDatabase dbb = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(myDbHelper.NAME, name);
+        contentValues.put(myDbHelper.MyPASSWORD, pass);
+        long id = dbb.insert(myDbHelper.TABLE_NAME, null , contentValues);
+        return id;
+    }
+
+    public String getData()
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        String[] columns = {myDbHelper.UID,myDbHelper.NAME,myDbHelper.MyPASSWORD};
+        Cursor cursor =db.query(myDbHelper.TABLE_NAME,columns,null,null,null,null,null);
+        StringBuffer buffer= new StringBuffer();
+        while (cursor.moveToNext())
+        {
+            int cid =cursor.getInt(cursor.getColumnIndex(myDbHelper.UID));
+            String name =cursor.getString(cursor.getColumnIndex(myDbHelper.NAME));
+            String  password =cursor.getString(cursor.getColumnIndex(myDbHelper.MyPASSWORD));
+            buffer.append(cid+ "   " + name + "   " + password +" \n");
+        }
+        return buffer.toString();
+    }
+
+    public  int delete(String uname)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        String[] whereArgs ={uname};
+
+        int count =db.delete(myDbHelper.TABLE_NAME ,myDbHelper.NAME+" = ?",whereArgs);
+        return  count;
+    }
+
+    public int updateName(String oldName , String newName)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(myDbHelper.NAME,newName);
+        String[] whereArgs= {oldName};
+        int count =db.update(myDbHelper.TABLE_NAME,contentValues, myDbHelper.NAME+" = ?",whereArgs );
+        return count;
+    }
+}
+
+
+public class MainActivity extends AppCompatActivity {
+    EditText Name, Pass , updateold, updatenew, delete;
+    myDbHelper my;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Name= (EditText) findViewById(R.id.editName);
+        Pass= (EditText) findViewById(R.id.editPass);
+        updateold= (EditText) findViewById(R.id.editText3);
+        updatenew= (EditText) findViewById(R.id.editText5);
+        delete = (EditText) findViewById(R.id.editText6);
+        my=new myDbHelper(this);
+    }
+
+    public void addUser(View view) {
+        String t1 = Name.getText().toString();
+        String t2 = Pass.getText().toString();
+        if(t1.isEmpty() || t2.isEmpty())
+        {
+            Toast.makeText(this, "Enter Both Name and Password", Toast.LENGTH_SHORT).show();
+
+        }
+        else
+        {
+            long id = my.insertData(t1,t2);
+            if(id<=0)
+            {
+                Toast.makeText(this, "Insertion Unsuccessful", Toast.LENGTH_SHORT).show();
+                Name.setText("");
+                Pass.setText("");
+            } else
+            {
+                Toast.makeText(this, "Insertion Successful", Toast.LENGTH_SHORT).show();
+                Name.setText("");
+                Pass.setText("");
+            }
+        }
+
+    }
+
+    public void viewdata(View view) {
+        String data = my.getData();
+        Toast.makeText(this, ""+data, Toast.LENGTH_SHORT).show();
+    }
+
+    public void update(View view) {
+
+        String u1 = updateold.getText().toString();
+        String u2 = updatenew.getText().toString();
+        if(u1.isEmpty() || u2.isEmpty())
+        {
+            Toast.makeText(this, "Enter Data", Toast.LENGTH_SHORT).show();
+            }
+        else
+        {
+            int a= my.updateName( u1, u2);
+            if(a<=0)
+            {
+                Toast.makeText(this, "Unsuccessful", Toast.LENGTH_SHORT).show();
+                updateold.setText("");
+                updatenew.setText("");
+            } else {
+                Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+                updateold.setText("");
+                updatenew.setText("");
+            }
+        }
+
+    }
+
+    public void delete(View view) {
+        String uname = delete.getText().toString();
+        if(uname.isEmpty())
+        {
+            Toast.makeText(this, "Enter Data", Toast.LENGTH_SHORT).show();
+                    }
+        else{
+            int a= my.delete(uname);
+            if(a<=0)
+            {
+                Toast.makeText(this, "Unsuccessful", Toast.LENGTH_SHORT).show();
+                delete.setText("");
+            }
+            else
+            {
+                Toast.makeText(this, "DELETED", Toast.LENGTH_SHORT).show();
+                delete.setText("");
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

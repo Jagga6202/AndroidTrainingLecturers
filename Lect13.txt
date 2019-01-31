@@ -1,0 +1,21 @@
+Date 30th January
+EditText with TextWatcher 
+EditText uses TextWatcher interface to watch change made over EditText. For doing this, EditText calls the addTextChangedListener() method.
+In example we will use EditText with TextWatcher to search data from ListView
+editText.addTextChangedListener(new TextWatcher() {
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        Toast.makeText(getApplicationContext(),"before text change",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        arrayAdapter.getFilter().filter(s);
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        Toast.makeText(getApplicationContext(),"after text change",Toast.LENGTH_LONG).show();
+    }
+});
+

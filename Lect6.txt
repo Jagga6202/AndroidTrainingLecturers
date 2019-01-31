@@ -1,0 +1,52 @@
+Date 17th January:-
+
+Android Widgets
+
+There are given a lot of android widgets with simplified examples such as Button, EditText, AutoCompleteTextView, ToggleButton, DatePicker, TimePicker, ProgressBar etc.
+
+
+TextView and EditText
+TextView is a user interface element that displays text to the user. 
+Xml Part
+<TextView 
+     android:id="@+id/plain_text_input"
+     android:layout_height="wrap_content"
+     android:layout_width="wrap_content"
+     android:text="text"/>
+Java Part
+TextView tv = (TextView) findViewById(R.id.plain_text_input);
+tv.setText("DemoApp");
+EditText is a user interface element for entering and modifying text. 
+Xml Part
+<EditText
+     android:id="@+id/edittext"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:inputType="text"/>
+Java Part
+EditText et = (EditText) findViewById(R.id.edittext);
+String test=et.getText().toString();
+
+Button
+A user interface element the user can tap or click to perform an action.
+Xml Part
+<Button
+     android:id="@+id/button_id"
+     android:layout_height="wrap_content"
+     android:layout_width="wrap_content"
+     android:text="ClickMe" />
+Java Part
+Button button = findViewById(R.id.button_id);
+         button.setOnClickListener(new View.OnClickListener() {
+             public void onClick(View v) {
+                 // Code 
+             }
+         });
+Toast
+Andorid Toast can be used to display information for the short period of time. A toast contains message to be displayed quickly and disappears after sometime.It doesn't block the user interaction.
+Toast Example
+Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();  
+
+
+
+
